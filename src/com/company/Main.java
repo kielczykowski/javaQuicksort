@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         //losowa tablica liczb całkowitych
-        int size = 10000000;
+        int size = 5000000;
         int[] intArray = new int[size];
 
         Random rand = new Random();
@@ -20,13 +20,16 @@ public class Main {
         // qs.print();
 
         ForkJoinPool fjp = new ForkJoinPool();
+        long startTime = System.nanoTime();
         fjp.invoke(qs);
 
         fjp.shutdown();
 
+        long endTime   = System.nanoTime();
+
         // System.out.println("After Sort: ");
         // qs.print();
-
-
+        long totalTime = endTime - startTime;
+        System.out.println(totalTime);
     }
 }
